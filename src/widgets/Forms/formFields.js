@@ -27,8 +27,13 @@ const FormFields = (props) => {
         : null
     }
 
-    const changeHandler = (event) => {
-        console.log(event.target.value)
+    const changeHandler = (event, id) => {
+        const newState = props.formData;
+
+        newState[id].value = event.target.value;
+
+        props.change(newState)
+
     }
 
     const renderTemplates = (data) => {
@@ -43,7 +48,7 @@ const FormFields = (props) => {
                     <input {...values.config} 
                             value={values.value}
                             onChange={
-                                (event) => changeHandler(event)
+                                (event) => changeHandler(event, data.id)
                             }
                     />
                 </div>

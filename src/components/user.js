@@ -33,7 +33,23 @@ class User extends Component {
     }
 
     updateForm = (newState) => {
-        console.log(newState)
+        this.setState({
+            formData:newState
+        })
+    }
+
+    submitForm = (event) => {
+        event.preventDefault();
+
+        let dataToSubmit = {};
+
+        for( let key in this.state.formData ){
+            dataToSubmit[key] = this.state.formData[key].value;
+        }
+        
+        console.log(dataToSubmit)
+
+        // axios.post(url, dataToSubmit) - POST
     }
 
     render(){
